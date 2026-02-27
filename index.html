@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tư Vấn Hướng Nghiệp THPT</title>
+    <style>
+        :root {
+            --primary-color: #004a99;
+            --secondary-color: #007bff;
+            --light-blue: #e7f1ff;
+            --bg-color: #f0f5f9;
+            --text-color: #1a202c;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* HEADER CHUYÊN NGHIỆP */
+        header {
+            background: linear-gradient(135deg, #003366 0%, #007bff 100%);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .contact-info-top {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.15);
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        /* KHUNG CHỨA CÁC Ô NGÀNH NGHỀ */
+        .container {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid #d1e3f8;
+        }
+
+        .box:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary-color);
+            box-shadow: 0 15px 30px rgba(0,123,255,0.2);
+        }
+
+        .box h3 { color: var(--primary-color); margin-bottom: 20px; }
+
+        button {
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        button:hover { background: var(--primary-color); }
+
+        /* KHUNG TƯ VẤN KHỦNG (MÀU XANH NHẠT) */
+        #ket-qua-chi-tiet {
+            display: none; /* Hiện ra khi nhấn nút */
+            max-width: 1000px;
+            margin: 20px auto 60px;
+            background: var(--light-blue);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            border: 2px solid #b3d7ff;
+            display: none; /* Sẽ đổi thành flex bằng JS */
+            gap: 30px;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .text-content { flex: 1.5; }
+        
+        .image-content {
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-content img {
+            width: 100%;
+            border-radius: 20px;
+            border: 6px solid white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .info-row {
+            margin-bottom: 18px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .value { line-height: 1.6; color: #333; }
+
+        footer {
+            background: #002244;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: auto;
+        }
+
+        a { color: #fff; text-decoration: underline; font-weight: bold; }
+
+        /* Responsive cho điện thoại */
+        @media (max-width: 768px) {
+            #ket-qua-chi-tiet { flex-direction: column; text-align: center; }
+            .image-content { order: -1; } /* Ảnh hiện lên trên đầu ở mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>TƯ VẤN HƯỚNG NGHIỆP CHO HỌC SINH THPT</h1>
+        <div class="contact-info-top">
+            <span>📞 Hotline: <b>0813817392</b></span> | 
+            <span>📧 Email: <a href="mailto:vnguyenphuc642@gmail.com">vnguyenphuc642@gmail.com</a></span>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="box"><h3>🎨 Nghệ thuật & Sáng tạo</h3><button onclick="tuVan('art')">Xem tư vấn</button></div>
+        <div class="box"><h3>💻 Công nghệ & AI</h3><button onclick="tuVan('tech')">Xem tư vấn</button></div>
+        <div class="box"><h3>📊 Kinh tế & Marketing</h3><button onclick="tuVan('biz')">Xem tư vấn</button></div>
+        <div class="box"><h3>🩺 Y Dược & Sức khỏe</h3><button onclick="tuVan('med')">Xem tư vấn</button></div>
+        <div class="box"><h3>🏫 Sư phạm & Giáo dục</h3><button onclick="tuVan('edu')">Xem tư vấn</button></div>
+        <div class="box"><h3>🌍 Ngôn ngữ & Du lịch</h3><button onclick="tuVan('lang')">Xem tư vấn</button></div>
+        <div class="box"><h3>⚖️ Luật & Pháp lý</h3><button onclick="tuVan('law')">Xem tư vấn</button></div>
+        <div class="box"><h3>🏗️ Kỹ thuật Xây dựng</h3><button onclick="tuVan('build')">Xem tư vấn</button></div>
+    </div>
+
+    <div id="ket-qua-chi-tiet">
+        <div class="text-content">
+            <h2 id="ten-nhom" style="color: var(--primary-color); font-size: 1.8rem; margin-top: 0;"></h2>
+            
+            <div class="info-row">
+                <span class="label">🌟 Tố chất phù hợp:</span>
+                <span class="value" id="to-chat"></span>
+            </div>
+            <div class="info-row">
+                <span class="label">📚 Chuyên ngành đào tạo:</span>
+                <span class="value" id="nganh-hoc"></span>
+            </div>
+            <div class="info-row">
+                <span class="label">🛠️ Kỹ năng cần rèn luyện:</span>
+                <span class="value" id="ky-nang"></span>
+            </div>
+            <div class="info-row">
+                <span class="label">🚀 Cơ hội nghề nghiệp:</span>
+                <span class="value" id="viec-lam"></span>
+            </div>
+            <div class="info-row">
+                <span class="label">🗺️ Lộ trình phát triển:</span>
+                <span class="value" id="lo-trinh"></span>
+            </div>
+
+            <button onclick="dongBang()" style="background: #6c757d; width: auto; padding: 12px 40px; margin-top: 10px;">Đóng bảng tư vấn</button>
+        </div>
+        
+        <div class="image-content">
+            <img src="hoc-sinh.jpg" alt="Ảnh minh họa hướng nghiệp">
+        </div>
+    </div>
+
+    <footer>
+        <p><b>HỆ THỐNG TƯ VẤN HƯỚNG NGHIỆP THÔNG MINH 2026</b></p>
+        <p>Địa chỉ hỗ trợ: Học sinh các trường THPT toàn quốc</p>
+        <p>Hotline: 0813817392 | Email: vnguyenphuc642@gmail.com</p>
+    </footer>
+
+    <script>
+        function tuVan(type) {
+            const display = document.getElementById('ket-qua-chi-tiet');
+            display.style.display = 'flex'; 
+            let d = {};
+
+            if (type === 'art') {
+                d = {
+                    t: "🎨 KHỐI NGHỆ THUẬT & SÁNG TẠO",
+                    tc: "Bạn có khiếu thẩm mỹ, hay quan sát, thích tạo ra cái mới và ghét sự gò bó.",
+                    n: "Thiết kế đồ họa, Kiến trúc, Truyền thông đa phương tiện, Thiết kế nội thất.",
+                    k: "Sáng tạo nội dung, sử dụng phần mềm Ps/Ai/Figma, tư duy kể chuyện hình ảnh.",
+                    v: "Chuyên viên sáng tạo tại Agency, Designer Freelancer, Kiến trúc sư công trình.",
+                    lt: "Luyện vẽ nền tảng -> Học phần mềm chuyên dụng -> Xây dựng Portfolio -> Đi làm."
+                };
+            } else if (type === 'tech') {
+                d = {
+                    t: "💻 KHỐI CÔNG NGHỆ & AI",
+                    tc: "Tư duy logic cực tốt, kiên trì, thích máy móc và các bài toán giải đố phức tạp.",
+                    n: "Khoa học máy tính, Kỹ thuật phần mềm, Trí tuệ nhân tạo (AI), An ninh mạng.",
+                    k: "Lập trình (Python, JavaScript), phân tích dữ liệu, tự học công nghệ mới.",
+                    v: "Kỹ sư phần mềm, Chuyên gia AI, Quản trị mạng, Phát triển ứng dụng Mobile.",
+                    lt: "Học tư duy thuật toán -> Học ngôn ngữ lập trình -> Làm dự án thực tế -> Kỹ sư."
+                };
+            } else if (type === 'biz') {
+                d = {
+                    t: "📊 KHỐI KINH TẾ & MARKETING",
+                    tc: "Năng động, thích giao tiếp, nhạy bén với cơ hội và không ngại áp lực doanh số.",
+                    n: "Quản trị kinh doanh, Marketing Digital, Logistics, Kinh doanh quốc tế.",
+                    k: "Đàm phán, thuyết phục, quản lý thời gian, phân tích xu hướng thị trường.",
+                    v: "Chuyên viên Marketing, Quản lý chuỗi cung ứng, Chuyên viên phân tích tài chính.",
+                    lt: "Nắm vững kiến thức thị trường -> Thực tập tại doanh nghiệp -> Trưởng nhóm kinh doanh."
+                };
+            } else if (type === 'med') {
+                d = {
+                    t: "🩺 KHỐI Y DƯỢC & SỨC KHỎE",
+                    tc: "Tỉ mỉ, cẩn thận tuyệt đối, lòng trắc ẩn lớn và sức khỏe tâm lý vững vàng.",
+                    n: "Y đa khoa, Dược học, Điều dưỡng, Răng-Hàm-Mặt, Xét nghiệm y học.",
+                    k: "Kiến thức chuyên môn sâu, kỹ năng thực hành lâm sàng, đạo đức nghề nghiệp.",
+                    v: "Bác sĩ tại các bệnh viện, Dược sĩ nhà thuốc/hãng dược, Nghiên cứu viên y sinh.",
+                    lt: "Học Đại học (6 năm) -> Thực tập nội trú -> Lấy chứng chỉ hành nghề -> Bác sĩ."
+                };
+            } else if (type === 'edu') {
+                d = {
+                    t: "🏫 KHỐI GIÁO DỤC & SƯ PHẠM",
+                    tc: "Kiên nhẫn, yêu trẻ, truyền đạt dễ hiểu và có tinh thần ham học hỏi suốt đời.",
+                    n: "Sư phạm Toán/Văn/Anh, Tâm lý học giáo dục, Công nghệ giáo dục.",
+                    k: "Thuyết trình, soạn bài giảng sáng tạo, thấu hiểu tâm lý lứa tuổi.",
+                    v: "Giáo viên trường công/quốc tế, Giảng viên, Chuyên gia tư vấn giáo dục.",
+                    lt: "Tích lũy kiến thức môn học -> Thực tập sư phạm -> Thi tuyển công chức/vào trường tư."
+                };
+            } else if (type === 'lang') {
+                d = {
+                    t: "🌍 KHỐI NGÔN NGỮ & NGOẠI GIAO",
+                    tc: "Thích khám phá văn hóa, khả năng bắt chước ngôn ngữ tốt, tự tin trước đám đông.",
+                    n: "Ngôn ngữ Anh/Nhật/Hàn/Trung, Quan hệ quốc tế, Du lịch lữ hành.",
+                    k: "Thành thạo 4 kỹ năng ngoại ngữ, giao tiếp liên văn hóa, xử lý tình huống.",
+                    v: "Biên-Phiên dịch viên, Chuyên viên ngoại giao, Hướng dẫn viên du lịch quốc tế.",
+                    lt: "Học ngoại ngữ lấy chứng chỉ (IELTS/JLPT) -> Học văn hóa xã hội -> Thực tế ngành nghề."
+                };
+            } else if (type === 'law') {
+                d = {
+                    t: "⚖️ KHỐI LUẬT & PHÁP LÝ",
+                    tc: "Yêu công bằng, tư duy phản biện sắc bén, trí nhớ tốt và khả năng lập luận.",
+                    n: "Luật kinh tế, Luật quốc tế, Luật dân sự.",
+                    k: "Phân tích văn bản, kỹ năng tranh tụng trước tòa, soạn thảo hợp đồng.",
+                    v: "Luật sư, Thẩm phán, Kiểm sát viên, Pháp chế doanh nghiệp.",
+                    lt: "Cử nhân Luật -> Học lớp đào tạo Luật sư -> Tập sự -> Thi lấy thẻ hành nghề."
+                };
+            } else if (type === 'build') {
+                d = {
+                    t: "🏗️ KHỐI KỸ THUẬT XÂY DỰNG",
+                    tc: "Giỏi toán hình học, chịu được gian khổ, thích kiến tạo các công trình thực tế.",
+                    n: "Kỹ thuật xây dựng dân dụng, Xây dựng cầu đường, Quản lý dự án xây dựng.",
+                    k: "Đọc bản vẽ, sử dụng phần mềm AutoCAD, quản lý nhân công và vật tư.",
+                    v: "Kỹ sư hiện trường, Giám sát thi công, Chuyên viên thiết kế kết cấu.",
+                    lt: "Nắm vững kỹ thuật xây dựng -> Thực tập công trường -> Kỹ sư giám sát chuyên nghiệp."
+                };
+            }
+
+            document.getElementById('ten-nhom').innerText = d.t;
+            document.getElementById('to-chat').innerText = d.tc;
+            document.getElementById('nganh-hoc').innerText = d.n;
+            document.getElementById('ky-nang').innerText = d.k;
+            document.getElementById('viec-lam').innerText = d.v;
+            document.getElementById('lo-trinh').innerText = d.lt;
+            
+            display.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function dongBang() {
+            document.getElementById('ket-qua-chi-tiet').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+    </script>
